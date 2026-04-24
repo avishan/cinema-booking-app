@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paderborn Grand Cinema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Monsieur+La+Doulaise&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="bi bi-camera-reels"
+                        viewBox="0 0 16 16">
+                    <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/>
+                    <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
+                    <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                    </svg>
+            </a>
+        </div>       
+        <h1 class="monsieur-la-doulaise-regular">Paderborn Vintage Cinema</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About The Cinema</a></li>
+                <li><a href="now-showing.html" aria-current="page">Now Showing</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          
+        </nav>
+    </header>
+   <main>
+
+  
+      <!------Action section---------->
+  
+    <section class="category"><!----each category take a row -------->
+       
+        <h2>Action</h2>
+
+        <div class="movies" id="action-movies"><!----Every 3 movies are in one div ------->
+             <article class="card"><!---Begin of movie Card----->
+                <a class="card-link" href="movie.html?id=1">
+                    <img src="image/action/inception.jpg" alt="Inception poster" width="400" height="600">
+                    <div class="card-content">
+                        <h3>Inception</h3>
+                        <p class="meta">148 min</p>
+                    </div>
+                </a>
+            </article><!---End of movie Card---->
+             <article class="card"><!---Begin of Card----->
+                <a class="card-link" href="movie.html?id=2">
+                    <img src="image/action/The Dark Knight.jpg" alt="The Dark Knight poster" width="400" height="600">
+                    <div class="card-content">
+                        <h3>The Dark Knight</h3>
+                        <p class="meta">152 min</p>
+                    </div>
+                </a>
+            </article><!---End of Card---->
+             <article class="card"><!---Begin of Card----->
+                <a class="card-link" href="movie.html?id=3">
+                    <img src="image/action/Interstellar.jpg" alt="Interstellar poster" width="400" height="600">
+                    <div class="card-content">
+                        <h3>Interstellar </h3>
+                        <p class="meta">169 min</p>
+                    </div>
+                </a>
+            </article><!---End of Card---->
+
+        
+       
+        </div><!----End Of action----->
+    </section>
+
+    <!-- Romance Section 2 -->
+    <section class="category">
+        <h2>Romance</h2>
+        <div class="movies" id="romance-movies">
+                <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=5">
+                        <img src="image/Romance/The Notebook.jpg" alt="The Notebook poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>The Notebook </h3>
+                            <p class="meta">123 min</p>
+                        </div>
+                    </a>
+                </article><!---End of Card---->
+                <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=7">
+                        <img src="image/Romance/Titanic.jpg" alt="Titanic poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>Titanic</h3>
+                            <p class="meta">192 min</p>
+                        </div>
+                    </a>
+                </article><!---End of Card---->
+                <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=8">
+                        <img src="image/Romance/La La Land.jpg" alt="La La Land poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>La La Land </h3>
+                            <p class="meta">128 min</p>
+                        </div>
+                    </a>
+                </article><!---End of Card---->
+       
+        </div>
+    </section>
+
+    <!-- Comedy Section  3-->
+    <section class="category">
+        <h2>Comedy</h2>
+        <div class="movies" id="comedy-movies"> <!---it was-<div class="movies"> because of using API we chnage it------>
+            <article class="card"><!------Begin of Card----->
+                    <a class="card-link" href="movie.html?id=4">
+                        <img src="image/comedy/3 Idiots.jpg" alt="3 Idiots poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>3 Idiots</h3>
+                            <p class="meta">170 min</p>
+                        </div>
+                    </a>
+            </article><!---End of Card---->
+            <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=10">
+                        <img src="image/comedy/Home Alone.jpg" alt="Home Alone poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>Home Alone </h3>
+                            <p class="meta">103 min</p>
+                        </div>
+                    </a>
+            </article><!---End of Card---->
+            <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=11">
+                        <img src="image/comedy/The Hangover.jpg" alt="The Hangover poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>The Hangover </h3>
+                            <p class="meta">100 min</p>
+                        </div>
+                    </a>
+            </article><!---End of Card---->
+        </div>
+    </section>
+   <!-- Animation Section 4-->
+     <section class="category">
+        <h2>Animation</h2>  
+        <div class="movies" id="animation-movies">
+               <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=6">
+                        <img src="image/Animation/The Polar Express.jpg" alt="The Polar Express poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>The Polar Express</h3>
+                            <p class="meta">100 min</p>
+                        </div>
+                    </a>
+            </article><!---End of Card---->
+               <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=12">
+                        <img src="image/Animation/toystory.jpg" alt="Toy Story poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>Toy Story</h3>
+                            <p class="meta">81 min</p>
+                        </div>
+                    </a>
+            </article><!---End of Card---->
+               <article class="card"><!---Begin of Card----->
+                    <a class="card-link" href="movie.html?id=13">
+                        <img src="image/Animation/Frozen.jpg" alt="Frozen poster" width="400" height="600">
+                        <div class="card-content">
+                            <h3>Frozen </h3>
+                            <p class="meta">102 min</p>
+                        </div>
+                    </a>
+            </article><!---End of Card---->
+        </div>
+    </section>
+
+
+ </main>
+
+ <!-------footer Section----------->
+  <footer class="site-footer">
+
+    <div class="footer-content"><!--we always neeed a Div warper with a seperate class inside footer to control width height alignment spacing layoout------>
+
+        <div class="footer-address">
+            <h3>Our Location</h3>
+            <address>
+                Paderborn, Germany<br>
+                Westerntor 33<br>
+                Phone: <a href="tel:+555555">555-555</a>
+            </address>
+        </div>
+
+        <div class="footer-copy">
+        <p>&copy; 2026 Avi Cinema • Paderborn</p>
+        </div>
+
+    </div>
+
+</footer>
+</body>
+
+</html>

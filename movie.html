@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details - Paderborn Vintage Cinema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300..800&family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     fill="currentColor"
+                     class="bi bi-camera-reels"
+                     viewBox="0 0 16 16">
+                    <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/>
+                    <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
+                    <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                </svg>
+            </a>
+        </div>
+        <h1 class="monsieur-la-doulaise-regular">Paderborn Vintage Cinema</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About The Cinema</a></li>
+                <li><a href="now-showing.html" aria-current="page">Now Showing</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-movie">
+        <section class="movie-detail">
+            <div class="movie-poster">
+                <img id="movie-image" src="" alt="Movie poster" width="400" height="600">
+            </div>
+
+            <div class="movie-info">
+                <h2 id="movie-title">Loading movie...</h2>
+                <p><strong>Genre:</strong> <span id="movie-genre"></span></p>
+                <p><strong>Duration:</strong> <span id="movie-duration"></span> min</p>
+                <p id="movie-description"><strong>Overview:</strong>Loading description....</p>
+
+                <!-----Button which goes to show showing and reserve seat------>
+                <button id="showings-btn" class="btn-primary">View Showings</button>
+            </div>
+        </section>
+
+        <!-- <section class="movie-showings">
+            <h3>Available Showings</h3>
+            <div id="showings-container"></div>
+        </section> -->
+       
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-address">
+                <h3>Our Location</h3>
+                <address>
+                    Paderborn, Germany<br>
+                    Westerntor 33<br>
+                    Phone: <a href="tel:+555555">555-555</a>
+                </address>
+            </div>
+
+            <div class="footer-copy">
+                <p>&copy; 2026 Avi Cinema • Paderborn</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-------Related to Api and dynamic page that page can  read the information related to the spcific film-------->
+<script src="movie.js"></script>
+
+</body>
+</html>

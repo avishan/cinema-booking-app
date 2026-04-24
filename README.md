@@ -28,22 +28,28 @@ A full-stack cinema booking web application where users can browse movies, view 
 ## Application Flow
 
 ### 🏠 Home Page
-![Home](screenshot/home-page.png)
+![Home](screenshot/1-home-page.png)
 
 ### 🎞️ Movie List
-![Movies](screenshot/movies-list.png)
+![Movies](screenshot/2-movies-list.png)
 
 ### 🎬 Movie Details
-![Details](screenshot/movie-details.png)
+![Movie Details](screenshot/3-movie-details.png))
 
 ### 🕒 Available Showings
-![Showings](screenshot/showings.png)
+![Showings](screenshot/4-showings-page.png)
 
 ### 💺 Seat Selection
-![Seats](screenshot/seat-selection.png)
+![Seat Selection](screenshot/5-seat-selection.png)
 
 ### ✅ Booking Confirmation
-![Confirmation](screenshot/booking-confirmation.png)
+![Booking Confirmation](screenshot/6-booking-confirmation.png)
+
+### ✅ About Page
+![About](screenshot/7-about-page.png)
+
+### ✅ Contact Page
+![Contact](screenshot/8-contact-page.png)
 
 ---
 

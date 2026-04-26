@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Paderborn Vintage Cinema</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Paderborn Vintage Cinema</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-contact">
+        <section class="contact-section">
+            <h2>Login</h2>
+
+            <form id="login-form">
+                <fieldset class="contact-content">
+                    <legend>Login</legend>
+
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </p>
+
+                    <p>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </p>
+                </fieldset>
+
+                <br>
+                <button type="submit">Login</button>
+            </form>
+
+            <p id="login-message"></p>
+        </section>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+
+</html>

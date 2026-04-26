@@ -30,10 +30,10 @@ fetch(`http://127.0.0.1:5000/showings/${showingId}`)
         return response.json();
       })
       .then(seatsFromDB => {
-  bookedSeats = seatsFromDB;
-  createSeatGrid(price);
-  setupConfirmButton(price);
-});
+        bookedSeats = seatsFromDB;
+        createSeatGrid(price);
+        setupConfirmButton(price);
+      });
   })
   .catch(error => {
     console.error("Error loading showing details:", error);
@@ -41,7 +41,7 @@ fetch(`http://127.0.0.1:5000/showings/${showingId}`)
       "Could not load showing details.";
   });
 
-  // ---------------- BELOW FETCH (OUTSIDE) ----------------
+// ---------------- BELOW FETCH (OUTSIDE) ----------------
 
 
 // ---------------- GLOBAL VARIABLES ----------------
@@ -120,6 +120,8 @@ function setupConfirmButton(seatPrice) {
       return;
     }
 
+    const user_id = localStorage.getItem("user_id");
+
     fetch("http://127.0.0.1:5000/bookings", {
       method: "POST",
       headers: {
@@ -127,7 +129,8 @@ function setupConfirmButton(seatPrice) {
       },
       body: JSON.stringify({
         showing_id: Number(showingId),
-        seats: selectedSeats
+        seats: selectedSeats,
+        user_id: user_id ? parseInt(user_id) : null
       })
     })
       .then(response => {
@@ -143,8 +146,8 @@ function setupConfirmButton(seatPrice) {
 
         const bookingMessage = document.getElementById("booking-message");
 
-          bookingMessage.style.display = "block";
-          bookingMessage.innerHTML = `
+        bookingMessage.style.display = "block";
+        bookingMessage.innerHTML = `
             <strong>✅ Booking confirmed!</strong><br>
             Booking ID: ${result.booking_id}<br>
             Movie: ${document.querySelector("#showing-info p:nth-child(1)").textContent.replace("Movie: ", "")}<br>
@@ -155,10 +158,10 @@ function setupConfirmButton(seatPrice) {
           `;
 
 
-          // ✅ DISABLE BUTTON HERE
-          const confirmBtn = document.getElementById("confirm-btn");
-          confirmBtn.disabled = true;
-          confirmBtn.textContent = "Booking Confirmed";
+        // ✅ DISABLE BUTTON HERE
+        const confirmBtn = document.getElementById("confirm-btn");
+        confirmBtn.disabled = true;
+        confirmBtn.textContent = "Booking Confirmed";
 
         // Move selected seats to booked seats THEN update state
         bookedSeats = [...bookedSeats, ...selectedSeats];

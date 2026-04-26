@@ -1,6 +1,7 @@
 from flask import Flask, jsonify , request
 from flask_cors import CORS
 import pyodbc
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 CORS(app)
@@ -9,7 +10,7 @@ CORS(app)
 def get_connection():
     return pyodbc.connect(
         "DRIVER={ODBC Driver 17 for SQL Server};"
-        "SERVER=localhost;"
+        "SERVER=VVR-PC\\MSSQL;"
         "DATABASE=Cinema;"
         "Trusted_Connection=yes;"
     )
@@ -187,6 +188,7 @@ def create_booking():
 
     showing_id = data.get("showing_id")
     seats = data.get("seats", [])
+    user_id = data.get("user_id")
 
     if not showing_id or not seats:
         return jsonify({"error": "showing_id and seats are required"}), 400
@@ -238,7 +240,7 @@ def create_booking():
             INSERT INTO dbo.Bookings (user_id, showing_id, status, total_price_cents, reserved_until)
             OUTPUT INSERTED.id
             VALUES (?, ?, ?, ?, ?)
-        """, None, showing_id, "confirmed", total_price_cents, None)
+        """, user_id, showing_id, "confirmed", total_price_cents, None)
 
         booking_id = cursor.fetchone().id
 
@@ -268,6 +270,128 @@ def create_booking():
         cursor.close()
         conn.close()
         return jsonify({"error": str(e)}), 500
+
+@app.route("/register", methods=["POST"])
+def register_user():
+    data = request.get_json()
+
+    full_name = data.get("full_name")
+    email = data.get("email")
+    password = data.get("password")
+
+    # Validation
+    if not full_name or not email or not password:
+        return jsonify({
+            "error": "full_name, email and password are required"
+        }), 400
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        # Check if email already exists
+        cursor.execute("""
+            SELECT id
+            FROM dbo.Users
+            WHERE email = ?
+        """, email)
+
+        existing_user = cursor.fetchone()
+
+        if existing_user:
+            cursor.close()
+            conn.close()
+            return jsonify({
+                "error": "Email already registered"
+            }), 409
+
+        # Hash password before storing
+        password_hash = generate_password_hash(password)
+
+        # Insert new user
+        cursor.execute("""
+            INSERT INTO dbo.Users
+            (full_name, email, password_hash, role)
+            VALUES (?, ?, ?, ?)
+        """, full_name, email, password_hash, "customer")
+
+        conn.commit()
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            "message": "User registered successfully"
+        }), 201
+
+    except Exception as e:
+        conn.rollback()
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            "error": str(e)
+        }), 500
+
+@app.route("/login", methods=["POST"])
+def login_user():
+    data = request.get_json()
+
+    email = data.get("email")
+    password = data.get("password")
+
+    if not email or not password:
+        return jsonify({
+            "error": "email and password are required"
+        }), 400
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    try:
+        # Find user by email
+        cursor.execute("""
+            SELECT id, full_name, email, password_hash, role
+            FROM dbo.Users
+            WHERE email = ?
+        """, email)
+
+        user = cursor.fetchone()
+
+        if not user:
+            cursor.close()
+            conn.close()
+            return jsonify({
+                "error": "Invalid email or password"
+            }), 401
+
+        # Verify password
+        if not check_password_hash(user.password_hash, password):
+            cursor.close()
+            conn.close()
+            return jsonify({
+                "error": "Invalid email or password"
+            }), 401
+
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            "message": "Login successful",
+            "user_id": user.id,
+            "full_name": user.full_name,
+            "email": user.email,
+            "role": user.role
+        }), 200
+
+    except Exception as e:
+        cursor.close()
+        conn.close()
+
+        return jsonify({
+            "error": str(e)
+        }), 500
+
 
 # Run the Flask app
 if __name__ == "__main__":
